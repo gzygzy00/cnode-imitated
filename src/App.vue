@@ -2,7 +2,8 @@
   <div id="app">
     <Header></Header>
     <main>
-      <PostList></PostList>
+<!--      此处router-view里的name:main对应Router里的main-->
+      <router-view name="main"></router-view>
     </main>
   </div>
 </template>
@@ -29,7 +30,7 @@
   /*  margin-top: 60px;*/
   /*}*/
   main {
-    margin: 0 auto;
+    margin: 15px auto;
     width: 80%;
   }
 </style>

@@ -41,16 +41,19 @@ Vue.filter('dateFormatter', function (str) {
   } else if (time < 30) {
     return '刚刚'
   } else if (time < 60) {
-    return Math.round(time) + '秒前'
+    return parseInt(time) + ' 秒前'
   } else if ((time / 60) < 60) {
-    return Math.round(time / 60) + '分钟前'
+    return parseInt(time / 60) + ' 分钟前'
   } else if ((time / (60 * 60)) < 24) {
-    return Math.round(time / (60 * 60)) + '小时前'
+    return parseInt(time / (60 * 60)) + ' 小时前'
   } else if ((time / (60 * 60 * 24)) < 31) {
-    return Math.round(time / (60 * 60 * 24)) + '天前'
+    return parseInt(time / (60 * 60 * 24)) + ' 天前'
   } else if ((time / (60 * 60 * 24)) < 365) {
-    return Math.round(time / (60 * 60 * 24 * 31)) + '月前'
+    return parseInt(time / (60 * 60 * 24 * 31)) + ' 个月前'
   } else {
-    return Math.round(time / (60 * 60 * 24 * 365)) + '年前'
+    return parseInt(time / (60 * 60 * 24 * 365)) + ' 年前'
   }
 })
+
+// parseInt 向下取整
+// Math.round 四舍五入

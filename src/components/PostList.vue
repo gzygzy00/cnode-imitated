@@ -22,7 +22,14 @@
           post_tab: (post.good !== true && post.top !== true)}]">
             <span>{{post | tabFormatter}}</span>
           </span>
-          <span class="title">{{post.title}}</span>
+
+          <router-link :to="{
+          name: 'post_content',
+          params: {id: post.id}
+          }">
+            <span class="title">{{post.title}}</span>
+          </router-link>
+
           <span class="last_reply_at clearfix">{{post.last_reply_at | dateFormatter}}</span>
         </li>
         <li>分页占位</li>
@@ -64,14 +71,16 @@
 </script>
 
 <style scoped>
+
   .posts ul {
     list-style: none;
     padding-inline-start: 0;
     width: 100%;
     border: 1px solid #f0f0f0;
+    background-color: #fff;
   }
 
-  .posts ul li:first-child div{
+  .posts ul li:first-child div {
     display: flex;
     padding: 5px 10px;
     background-color: #f6f6f6;
@@ -95,6 +104,10 @@
   .posts ul li:not(:first-child) {
     border-top: 1px solid #f0f0f0;
     padding: 10px;
+  }
+
+  .posts ul li:not(:first-child):hover {
+    background-color: #f6f6f6;
   }
 
   .posts ul li:last-child {
@@ -145,6 +158,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  .posts ul li .title:hover {
+    text-decoration: underline;
   }
 
   .last_reply_at {
