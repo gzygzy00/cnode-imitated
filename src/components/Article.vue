@@ -13,7 +13,7 @@
             <li class="create_at">发布于 {{post.create_at | dateFormatter}}</li>
             <li class="loginname">作者 {{post.author.loginname}}</li>
             <li class="visit_count">{{post.visit_count}} 次浏览</li>
-            <li class="tab">来自 {{post.tab | tabFormatter}}</li>
+            <li class="tab">来自 {{post | tabFormatter}}</li>
           </ul>
         </header>
         <div v-html="post.content" class="topic_content markdown-body"></div>
@@ -26,7 +26,14 @@
 
         <div v-for="(reply, index) in post.replies">
           <div class="author_bar">
-            <img :src="reply.author.avatar_url" alt="">
+            <router-link :to="{
+            name: 'user_info',
+            params: {
+              loginname: reply.author.loginname
+            }
+            }">
+              <img :src="reply.author.avatar_url" alt="">
+            </router-link>
             <span class="loginname">{{reply.author.loginname}}</span>
             <span class="index">{{index + 1}} 楼•{{reply.create_at | dateFormatter}}</span>
             <span class="isAuthor" v-if="reply.author.loginname === post.author.loginname">作者</span>
@@ -125,7 +132,6 @@
     padding: 10px;
     font-size: 14px;
     color: #444;
-
   }
 
   .article .replies {

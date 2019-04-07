@@ -9,14 +9,6 @@ Vue.config.productionTip = false
 
 Vue.prototype.$http = axios
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  components: { App },
-  template: '<App/>'
-})
-
 Vue.filter('tabFormatter', function (post) {
   if (post.good === true) {
     return '精华'
@@ -57,3 +49,13 @@ Vue.filter('dateFormatter', function (str) {
 
 // parseInt 向下取整
 // Math.round 四舍五入
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app',
+  router,
+  components: { App },
+  template: '<App/>'
+})
+
+

@@ -33,4 +33,8 @@
     margin: 15px auto;
     width: 80%;
   }
+
+  a {
+    text-decoration: none;
+  }
 </style>

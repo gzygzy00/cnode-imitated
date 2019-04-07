@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div class="loading"></div>
-    <div class="posts">
+    <div class="loading" v-if="isLoading">
+    </div>
+
+    <div class="posts" v-else>
       <ul>
         <li>
           <div>
@@ -14,7 +16,14 @@
           </div>
         </li>
         <li v-for="post in posts">
-          <img :src="post.author.avatar_url" alt="">
+          <router-link :to="{
+            name: 'user_info',
+            params: {
+              loginname: post.author.loginname
+             }
+          }">
+            <img :src="post.author.avatar_url" alt="">
+          </router-link>
           <span class="count">
             <span class="reply_count">{{post.reply_count}}</span>/<span class="visit_count">{{post.visit_count}}</span>
           </span>
@@ -43,8 +52,8 @@
     name: "PostList",
     data: function () {
       return {
-        posts: [],
-        post_good: ''
+        isLoading: true,
+        posts: []
       }
     },
     methods: {
@@ -55,8 +64,11 @@
         })
           .then(res => {
             console.log(res);
-            this.posts = res.data.data
-            console.log(new Date(this.posts[0].last_reply_at));
+            if (res.data.success === true) {
+              this.isLoading = false;
+              this.posts = res.data.data;
+              console.log(new Date(this.posts[0].last_reply_at));
+            }
           })
           .catch(err => {
             console.log(err)
@@ -64,6 +76,7 @@
       }
     },
     beforeMount() {
+      this.isLoading = true;
       this.getData()
     }
   }
@@ -87,7 +100,7 @@
   }
 
   .posts ul li:first-child span {
-    border: 1px solid black;
+    /*border: 1px solid black;*/
     margin: 0 10px;
     padding: 3px 4px;
     border-radius: 3px;
