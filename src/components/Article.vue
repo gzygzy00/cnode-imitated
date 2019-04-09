@@ -73,6 +73,11 @@
           })
       }
     },
+    watch: {
+      '$route'(to, from) {
+        this.getArticleData()
+      }
+    },
     beforeMount() {
       this.isLoading = true
       this.getArticleData()
@@ -85,6 +90,10 @@
 
   ul li {
     list-style: none;
+  }
+
+  .article {
+    margin-right: 305px;
   }
 
   .article .panel header {

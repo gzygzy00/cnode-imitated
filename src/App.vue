@@ -2,7 +2,8 @@
   <div id="app">
     <Header></Header>
     <main>
-<!--      此处router-view里的name:main对应Router里的main-->
+      <!--  此处router-view里的name:main对应Router里的main  -->
+      <router-view name="slidebar"></router-view>
       <router-view name="main"></router-view>
     </main>
   </div>
@@ -31,7 +32,7 @@
   /*}*/
   main {
     margin: 15px auto;
-    width: 80%;
+    width: 90%;
   }
 
   a {

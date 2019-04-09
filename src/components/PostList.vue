@@ -34,7 +34,10 @@
 
           <router-link :to="{
           name: 'post_content',
-          params: {id: post.id}
+          params: {
+            id: post.id,
+            author: post.author.loginname
+            }
           }">
             <span class="title">{{post.title}}</span>
           </router-link>
@@ -187,8 +190,8 @@
   }
 
   .clearfix:after {
-    display: block;
     content: '';
+    display: block;
     clear: both;
   }
 

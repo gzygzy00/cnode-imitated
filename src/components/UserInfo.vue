@@ -36,7 +36,8 @@
           <router-link :to="{
             name: 'post_content',
             params: {
-              id: item.id
+              id: item.id,
+              author: item.author.loginname
             }
           }">
             <span>{{item.title}}</span>
@@ -62,7 +63,8 @@
           <router-link :to="{
             name: 'post_content',
             params: {
-              id: item.id
+              id: item.id,
+              author: item.author.loginname
             }
           }">
             <span>{{item.title}}</span>
