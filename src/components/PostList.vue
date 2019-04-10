@@ -44,26 +44,34 @@
 
           <span class="last_reply_at clearfix">{{post.last_reply_at | dateFormatter}}</span>
         </li>
-        <li>分页占位</li>
+        <!--分页-->
+        <li>
+          <Pagination @handleList="renderList"></Pagination>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+  import Pagination from './Pagination'
+
   export default {
     name: "PostList",
     data: function () {
       return {
         isLoading: true,
-        posts: []
+        posts: [],
+        postPage: 1
       }
     },
     methods: {
       getData() {
         this.$http.get('https://cnodejs.org/api/v1/topics', {
-          page: 1,
-          limit: 10
+          params: {
+            page: this.postPage,
+            limit: 20
+          }
         })
           .then(res => {
             console.log(res);
@@ -76,11 +84,18 @@
           .catch(err => {
             console.log(err)
           })
+      },
+      renderList(value) {
+        this.postPage = value;
+        this.getData()
       }
     },
     beforeMount() {
       this.isLoading = true;
       this.getData()
+    },
+    components: {
+      Pagination
     }
   }
 
@@ -122,7 +137,7 @@
     padding: 10px;
   }
 
-  .posts ul li:not(:first-child):hover {
+  .posts ul li:not(:first-child):not(:last-child):hover {
     background-color: #f6f6f6;
   }
 
