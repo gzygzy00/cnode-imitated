@@ -62,7 +62,7 @@
       getArticleData() {
         this.$http.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
           .then(res => {
-            console.log(res)
+            // console.log(res)
             if (res.data.success === true) {
               this.isLoading = false
               this.post = res.data.data

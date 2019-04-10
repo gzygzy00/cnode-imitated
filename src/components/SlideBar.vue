@@ -77,7 +77,7 @@
       getData() {
         this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.author}`)
           .then(res => {
-            console.log(res)
+            // console.log(res)
             if (res.data.success === true) {
               this.isLoading = false
               this.slideInfo = res.data.data

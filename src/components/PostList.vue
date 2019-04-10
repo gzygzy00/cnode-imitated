@@ -74,11 +74,11 @@
           }
         })
           .then(res => {
-            console.log(res);
+            // console.log(res);
             if (res.data.success === true) {
               this.isLoading = false;
               this.posts = res.data.data;
-              console.log(new Date(this.posts[0].last_reply_at));
+              // console.log(new Date(this.posts[0].last_reply_at));
             }
           })
           .catch(err => {
