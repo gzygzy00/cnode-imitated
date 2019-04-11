@@ -15,7 +15,7 @@
             <span>客户端测试</span>
           </div>
         </li>
-        <li v-for="post in posts">
+        <li v-for="post in posts" class="clearfix">
           <router-link :to="{
             name: 'user_info',
             params: {
@@ -42,7 +42,7 @@
             <span class="title">{{post.title}}</span>
           </router-link>
 
-          <span class="last_reply_at clearfix">{{post.last_reply_at | dateFormatter}}</span>
+          <span class="last_reply_at">{{post.last_reply_at | dateFormatter}}</span>
         </li>
         <!--分页-->
         <li>
@@ -202,12 +202,6 @@
     text-align: right;
     font-size: 11px;
     color: #777;
-  }
-
-  .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
   }
 
 </style>

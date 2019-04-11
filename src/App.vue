@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <Header></Header>
-    <main>
+    <main class="clearfix">
       <!--  此处router-view里的name:main对应Router里的main  -->
-      <router-view name="slidebar"></router-view>
       <router-view name="main"></router-view>
+      <router-view name="slidebar"></router-view>
     </main>
   </div>
 </template>
@@ -33,9 +33,17 @@
   main {
     margin: 15px auto;
     width: 90%;
+    display: flex;
+    justify-content: space-between;
   }
 
   a {
     text-decoration: none;
+  }
+
+  .clearfix:after {
+    content: '';
+    display: block;
+    clear: both;
   }
 </style>

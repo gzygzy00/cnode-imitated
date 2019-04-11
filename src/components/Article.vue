@@ -88,12 +88,30 @@
 <style>
   @import url('../assets/github-markdown.css');
 
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 15px;
+  }
+
+  /*.markdown-body:after {*/
+  /*  display: none;*/
+  /*}*/
+
+  @media (max-width: 767px) {
+    .markdown-body {
+      padding: 15px;
+    }
+  }
+
   ul li {
     list-style: none;
   }
 
   .article {
-    margin-right: 305px;
+    margin-right: 20px;
   }
 
   .article .panel header {
@@ -189,9 +207,10 @@
 
   .article .replies .reply_content {
     margin-top: -36px;
-    margin-bottom: 15px;
-    padding-left: 60px;
+    /*margin-bottom: 15px;*/
+    padding-left: 45px;
     padding-right: 10px;
+    /*padding-bottom: 10px;*/
     vertical-align: top;
   }
 

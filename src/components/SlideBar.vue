@@ -1,5 +1,5 @@
 <template>
-  <div class="slide_bar clearfix">
+  <div class="slide_bar">
     <div v-if="isLoading"></div>
     <div>
 
@@ -112,7 +112,7 @@
 
 <style scoped>
   .slide_bar {
-    float: right;
+    /*float: right;*/
     width: 290px;
   }
 
