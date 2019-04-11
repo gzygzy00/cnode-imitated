@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header></Header>
-    <main class="clearfix">
+    <main>
       <!--  此处router-view里的name:main对应Router里的main  -->
       <router-view name="main"></router-view>
       <router-view name="slidebar"></router-view>
@@ -41,9 +41,9 @@
     text-decoration: none;
   }
 
-  .clearfix:after {
-    content: '';
-    display: block;
-    clear: both;
-  }
+  /*.clearfix:after {*/
+  /*  content: '';*/
+  /*  display: block;*/
+  /*  clear: both;*/
+  /*}*/
 </style>
