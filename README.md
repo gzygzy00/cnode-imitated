@@ -1,8 +1,9 @@
 # cnode-imitated
 [预览链接](https://gzygzy00.github.io/cnode-imitated/dist/#/)
-仿CNode
-官网链接: cnodejs.org
-技术栈：Vue, Vue CLI, Vue Router
+
+### 仿CNode
+#### 官网链接: cnodejs.org
+#### 技术栈：Vue, Vue CLI, Vue Router
 
 利用官网提供的 API，对网站进行仿写练习 详情
 
