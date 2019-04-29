@@ -25,7 +25,7 @@
         </div>
 
         <div v-for="(reply, index) in post.replies">
-          <div class="author_bar">
+          <div class="author_bar clearfix">
             <router-link :to="{
             name: 'user_info',
             params: {
@@ -35,7 +35,13 @@
               <img :src="reply.author.avatar_url" alt="">
             </router-link>
             <span class="loginname">{{reply.author.loginname}}</span>
-            <span class="index">{{index + 1}} 楼•{{reply.create_at | dateFormatter}}</span>
+            <span class="index">{{index + 1}} 楼 • {{reply.create_at | dateFormatter}}</span>
+            <span class="thumbs" v-if="reply.ups.length !== 0">
+              <svg class="icon" aria-hidden="true">
+                <use xlink:href="#icon-thumb"></use>
+               </svg>
+              {{reply.ups.length + 1}}
+            </span>
             <span class="isAuthor" v-if="reply.author.loginname === post.author.loginname">作者</span>
           </div>
           <div class="reply_content">
@@ -62,7 +68,7 @@
       getArticleData() {
         this.$http.get(`https://cnodejs.org/api/v1/topic/${this.$route.params.id}`)
           .then(res => {
-            // console.log(res)
+            console.log(res)
             if (res.data.success === true) {
               this.isLoading = false
               this.post = res.data.data
@@ -91,7 +97,7 @@
   .markdown-body {
     box-sizing: border-box;
     min-width: 200px;
-    max-width: 980px;
+    max-width: 842px;
     margin: 0 auto;
     padding: 15px;
   }
@@ -111,7 +117,8 @@
   }
 
   .article {
-    margin-right: 20px;
+    width: 65vw;
+    min-width: 450px;
   }
 
   .article .panel header {
@@ -213,6 +220,15 @@
     /*padding-bottom: 10px;*/
     vertical-align: top;
   }
+
+  .article .thumbs {
+    float: right;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: top;
+    color: gray;
+  }
+
 
 
 </style>

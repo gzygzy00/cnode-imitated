@@ -113,7 +113,9 @@
 <style scoped>
   .slide_bar {
     /*float: right;*/
-    width: 290px;
+    margin-left: 20px;
+    width: 25vw;
+    min-width: 290px;
   }
 
   .slide_bar .panel {

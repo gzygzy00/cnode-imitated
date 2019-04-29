@@ -1,13 +1,16 @@
 <template>
   <div>
-    <div class="loading" v-if="isLoading">
-    </div>
+    <div v-if="isLoading"></div>
 
     <div class="posts" v-else>
       <ul>
         <li>
           <div>
-            <span class="active">全部</span>
+            <router-link :to="{
+              name: 'root'
+            }">
+              <span>全部</span>
+            </router-link>
             <router-link :to="{
               name: 'good_list',
               params: {
@@ -16,14 +19,7 @@
             }">
               <span>精华</span>
             </router-link>
-            <router-link :to="{
-              name: 'share_list',
-              params: {
-                tab: 'share'
-              }
-            }">
-              <span>分享</span>
-            </router-link>
+            <span class="active">分享</span>
             <router-link :to="{
               name: 'ask_list',
               params: {
@@ -85,8 +81,8 @@
   import Pagination from './Pagination'
 
   export default {
-    name: "PostList",
-    data: function () {
+    name: "ShareList",
+    data() {
       return {
         isLoading: true,
         posts: [],
@@ -97,21 +93,19 @@
       getData() {
         this.$http.get('https://cnodejs.org/api/v1/topics', {
           params: {
+            tab: 'share',
             page: this.postPage,
             limit: 20
           }
+        }).then(res => {
+          // console.log(res)
+          if (res.data.success === true) {
+            this.isLoading = false;
+            this.posts = res.data.data;
+          }
+        }).catch(err => {
+          console.log(err)
         })
-          .then(res => {
-            // console.log(res);
-            if (res.data.success === true) {
-              this.isLoading = false;
-              this.posts = res.data.data;
-              // console.log(new Date(this.posts[0].last_reply_at));
-            }
-          })
-          .catch(err => {
-            console.log(err)
-          })
       },
       renderList(value) {
         this.postPage = value;
@@ -125,14 +119,13 @@
       }
     },
     mounted() {
-      this.isLoading = true;
+      this.isLoading = false
       this.getData()
     },
     components: {
       Pagination
     }
   }
-
 </script>
 
 <style scoped>

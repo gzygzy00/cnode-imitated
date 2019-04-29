@@ -7,7 +7,11 @@
       <ul>
         <li>
           <div>
-            <span class="active">全部</span>
+            <router-link :to="{
+              name: 'root'
+            }">
+              <span>全部</span>
+            </router-link>
             <router-link :to="{
               name: 'good_list',
               params: {
@@ -24,14 +28,9 @@
             }">
               <span>分享</span>
             </router-link>
-            <router-link :to="{
-              name: 'ask_list',
-              params: {
-                tab: 'ask'
-              }
-            }">
-              <span>问答</span>
-            </router-link>
+
+            <span class="active">问答</span>
+
             <router-link :to="{
               name: 'job_list',
               params: {
@@ -85,7 +84,7 @@
   import Pagination from './Pagination'
 
   export default {
-    name: "PostList",
+    name: "AskList",
     data: function () {
       return {
         isLoading: true,
@@ -98,7 +97,8 @@
         this.$http.get('https://cnodejs.org/api/v1/topics', {
           params: {
             page: this.postPage,
-            limit: 20
+            limit: 20,
+            tab: 'ask'
           }
         })
           .then(res => {

@@ -14,7 +14,11 @@
         </li>
 <!--        <li><a href="#">新手入门</a></li>-->
 <!--        <li><a href="#">API</a></li>-->
-        <li><a href="#">关于</a></li>
+        <li>
+          <router-link :to="{name: 'about'}">
+            <a href="#">关于</a>
+          </router-link>
+        </li>
 <!--        <li><a href="#">注册</a></li>-->
 <!--        <li><a href="#">登录</a></li>-->
       </ul>
@@ -34,7 +38,7 @@
   /*}*/
 
   div {
-    background-color: #444444;
+    background-color: #444;
   }
 
   header {
@@ -42,7 +46,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    width: 80%;
+    width: 90%;
   }
 
   ul {

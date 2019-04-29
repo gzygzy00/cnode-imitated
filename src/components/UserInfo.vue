@@ -11,11 +11,19 @@
         </div>
 
         <div class="inner_info">
-          <img :src="info.avatar_url" alt="">
-          <span>{{info.loginname}} 积分{{info.score}}</span>
-          <span>话题收藏（暂缺）</span>
-          <span>svg</span>
-          <span>svg @{{info.githubUsername}}</span>
+          <div class="head_name">
+            <img :src="info.avatar_url" alt="">
+            <span>{{info.loginname}}</span>
+          </div>
+          <p>积分{{info.score}}</p>
+          <!--          <span>话题收藏</span>-->
+          <!--          <span>svg</span>-->
+          <p>
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-github"></use>
+            </svg>
+            @{{info.githubUsername}}
+          </p>
           <span>注册时间 {{info.create_at | dateFormatter}}</span>
         </div>
       </div>
@@ -103,11 +111,11 @@
       }
     },
     watch: {
-      $route(){
+      $route() {
         this.getUserData()
       }
     },
-    beforeMount() {
+    mounted() {
       this.isLoading = true;
       this.getUserData()
     }
@@ -130,6 +138,7 @@
 
   .user_info .panel {
     margin-bottom: 13px;
+    width: 90vw;
   }
 
   .user_info .header {
@@ -151,6 +160,15 @@
     padding: 10px;
     border-top: 1px solid #e5e5e5;
     background-color: #fff;
+  }
+
+  .user_info .inner_info .head_name {
+    display: flex;
+    align-items: center;
+  }
+
+  .user_info .inner_info .head_name span {
+    margin-left: 10px;
   }
 
   .user_info ul li {
