@@ -5,7 +5,7 @@
 #### 官网链接: cnodejs.org
 #### 技术栈：Vue, Vue CLI, Vue Router
 
-利用官网提供的 API，对网站进行仿写练习 详情
+利用官网提供的 API，对网站进行仿写练习
 
 通过 Vue CLI 搭建，使用 Axios 获取数据，Vue Router 实现路由的跳转，并利用 watch 监听路由；
 
